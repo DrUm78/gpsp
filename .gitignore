@@ -18,3 +18,4 @@ install-sh
 depcomp
 aclocal.m4
 *.dump
+*.opk
