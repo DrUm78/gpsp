@@ -5,6 +5,8 @@ git pull
 cp icons/gpsp.png opk/
 cp COPYING.DOC opk/
 cp gpsp.sh opk/
+cp gba_launch_gpsp.sh opk/
+cp instant_play opk/
 
 cd /opt/FunKey-OS
 rm -rf FunKey/output/build/gpsp-*
@@ -32,6 +34,6 @@ Icon=gpsp
 Categories=emulators
 SelectorFilter=gba,zip' > opk/gpsp.funkey-s.desktop
 
-mksquashfs opk/ gpsp_v0.91_funkey-s.opk -all-root -noappend -no-exports -no-xattrs
+mksquashfs opk/ gpsp_v1.2.3_funkey-s.opk -all-root -noappend -no-exports -no-xattrs
 
 rm -rf opk/
