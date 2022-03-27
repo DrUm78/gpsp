@@ -19,7 +19,7 @@
 
 
 #include "common.h"
-#include <SDL.h>
+#include <SDL/SDL.h>
 u32 global_enable_audio = 1;
 
 direct_sound_struct direct_sound_channel[2];

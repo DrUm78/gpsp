@@ -7,13 +7,12 @@ cp COPYING.DOC opk/
 cp gpsp.sh opk/
 cp gba_launch_gpsp.sh opk/
 cp instant_play opk/
-
-cd /opt/FunKey-OS
-rm -rf FunKey/output/build/gpsp-*
-git pull
+cd chip/
+make clean
 make
-cp FunKey/output/target/usr/games/gpsp /opt/gpsp/opk
+/opt/FunKey-sdk/bin/arm-funkey-linux-musleabihf-strip gpsp
 cd -
+cp chip/gpsp opk/
 
 # https://unix.stackexchange.com/questions/219268/how-to-add-new-lines-when-using-echo
 print()
