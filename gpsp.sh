@@ -1,10 +1,12 @@
 #!/bin/sh
-# Compare md5 of the gpSP binary in /usr/games with the OPK one
-if [ `md5sum /usr/games/gpsp | cut -d' ' -f1` != `md5sum gpsp | cut -d' ' -f1` ]; then
-	rw
-	cp -f gpsp /usr/games
-	cp -f gba_launch_gpsp.sh /usr/games/launchers
-	cp -f instant_play /usr/local/sbin
-	ro
-fi
-exec /usr/games/launchers/gba_launch_gpsp.sh "$1"
+# Launch the process in background, record the PID into a file, wait
+# for the process to terminate and erase the recorded PID
+# Do not use asound.conf to avoid saturated sound
+rw
+mv -f /etc/asound.conf /etc/asound.conf.BAK
+./gpsp "$1"&
+pid record $!
+wait $!
+pid erase
+mv -f /etc/asound.conf.BAK /etc/asound.conf
+ro
